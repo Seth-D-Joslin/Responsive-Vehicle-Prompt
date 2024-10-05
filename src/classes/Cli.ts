@@ -265,7 +265,6 @@ class Cli {
           name: "vehicleToTow",
           message: "Select a vehicle to tow",
           choices: this.vehicles
-          .filter((vehicle) => vehicle.vin !== truck.vin)
           .map((vehicle) => `${vehicle.vin} -- ${vehicle.make} ${vehicle.model}`),
         },
       ])
@@ -276,8 +275,10 @@ class Cli {
         );
         if (vehicleToTow) {
           truck.tow(vehicleToTow);
+          // this.performActions();
         } 
-      });
+        this.performActions();
+       });
   }
 
   // method to perform actions on a vehicle
@@ -368,6 +369,7 @@ class Cli {
           );
           if (selectedVehicle instanceof Truck) {
             this.findVehicleToTow(selectedVehicle);
+            return;
           } else {
             console.log(`Only trucks have the capability to tow.`);
           }
