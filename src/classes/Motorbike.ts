@@ -11,7 +11,7 @@ class Motorbike extends Vehicle {
   weight: number;
   topSpeed: number;
   wheels: Wheel[];
-  vehicleType: string;
+  // vehicleType: string;
   constructor(
     vin: string,
     color: string,
@@ -30,7 +30,7 @@ class Motorbike extends Vehicle {
     this.year = year;
     this.weight = weight;
     this.topSpeed = topSpeed;
-    this.vehicleType = "Motorbike";
+    // this.vehicleType = "Motorbike";
     if (wheels.length !== 2) {
       this.wheels = [new Wheel(), new Wheel()];
     } else {
@@ -38,8 +38,8 @@ class Motorbike extends Vehicle {
     }
   }
 
-  wheelie(vehicle: Motorbike): void {
-     console.log(`That ${vehicle.make} ${vehicle.model} rider just tried to pop a wheelie, but failed miserably!`);
+  wheelie(): void {
+     console.log(`That ${this.make} ${this.model} rider just tried to pop a wheelie, but failed miserably!`);
     }
 
   override printDetails(): void {
@@ -51,7 +51,7 @@ class Motorbike extends Vehicle {
     console.log(`Year: ${this.year}`);
     console.log(`Weight: ${this.weight} lbs`);
     console.log(`Top Speed: ${this.topSpeed} mph`);
-    console.log(`Vehicle Type: ${this.vehicleType}`);
+    // console.log(`Vehicle Type: ${this.vehicleType}`);
 
     console.log(
       `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`

@@ -15,7 +15,7 @@ class Truck extends Vehicle implements AbleToTow {
   topSpeed: number;
   wheels: Wheel[];
   towingCapacity: number;
-  vehicleType: string;
+  // vehicleType: string;
   constructor(
     vin: string,
     color: string,
@@ -37,21 +37,19 @@ class Truck extends Vehicle implements AbleToTow {
     this.topSpeed = topSpeed;
     this.wheels = wheels;
     this.towingCapacity = towingCapacity;
-    this.vehicleType = "Truck";
+    // this.vehicleType = "Truck";
     if (wheels.length !== 4) {
       this.wheels = [new Wheel(), new Wheel(), new Wheel(), new Wheel()];
     } else {
       this.wheels = wheels;
     }
-
-
   }
   
-  tow(vehicle: Truck | Motorbike | Car): void {
-   if (vehicle.weight > this.towingCapacity) {
-    console.log(`This vehicle exceeds maximum towing capacity.`);
+  tow(vehicle: Car | Truck | Motorbike): void {
+   if (this === vehicle) {
+    console.log(`The ${this.make} ${this.model} cannot tow itself.`);
    } else {
-    console.log(`The ${vehicle.make} ${vehicle.model} is being towed by ${this.make} ${this.model}.`)
+    console.log(`The ${vehicle.make} ${vehicle.model} is being towed by ${this.make} ${this.model}.`);
    }
   }
 
@@ -64,7 +62,7 @@ class Truck extends Vehicle implements AbleToTow {
     console.log(`Year: ${this.year}`);
     console.log(`Weight: ${this.weight} lbs`);
     console.log(`Top Speed: ${this.topSpeed} mph`);
-    console.log(`Vehicle Type: ${this.vehicleType}`);
+    // console.log(`Vehicle Type: ${this.vehicleType}`);
 
     console.log(
       `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
